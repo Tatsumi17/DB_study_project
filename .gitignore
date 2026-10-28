@@ -1,0 +1,14 @@
+# Secrets and machine-specific files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+# Application-generated dependencies and state
+vendor/
+node_modules/
+storage/logs/
+storage/framework/
+# Keep learning SQL and artificial datasets under version control.
+# Do not use blanket *.sql or *.csv exclusions.
