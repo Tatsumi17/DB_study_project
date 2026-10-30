@@ -1,0 +1,27 @@
+課題06A Sail・Git・SQLを準備する
+教材版：3.0.0／順次出題。前提：05通過
+対応学習領域：L03・L07・L08・L11（詳細はcurriculum/learning_topics.txt）
+
+【企業からの依頼】
+「実装に入る前に、別の人も起動できる開発環境と、データの確認方法を用意してください。」
+
+【先に学ぶ内容】
+ホスト/コンテナ、CPU・メモリ・ディスク、ポート、localhost、サービス名、永続化。SQLのSELECT/WHERE/ORDER BY/JOIN/GROUP BY/COUNT、NULLと集計の粒度。Gitの作業ツリー/index/commit/branch/remote。
+知らない用語はAIに質問し、別題材で小さく確認してから進む。
+
+【読む資料】
+設計成果物、公式Sail資料、docs/learning_workflow.md
+共通：AGENTS.md、progress/current_state.md、個人の既存提出・レビュー。
+
+【作業と提出】
+1. OS・Docker・空き容量、PHP/Laravel/MySQL等の版と公式資料の確認日を記録。新規Laravelをapp/にSailで作成する。既存ファイルに上書きしない。
+2. 起動/停止/ログ/DB接続の手順とホスト・コンテナの通信図を書く。.env.exampleに変数名のみ、実.envは除外。
+3. 自分の04設計の必要な範囲をmigrationと人工seedにする。試験DBを開発DBから分離する。
+4. 人工データで単表検索、2表JOIN、GROUP BY集計をSQLで各1件作り、目的・期待結果・実結果を説明。同じ処理をEloquentでも確認し、発行SQLとN+1の起きる条件を説明。
+5. study/06aで差分をcommit/pushし、実行ログ（秘密除去）とsubmissions/06A_v1.txtを提出。
+安全：migrate:fresh等を既存データ入り環境に無確認で実行しない。SQLの更新/削除は試験データと対象件数を確認してから。
+共通テンプレートtemplates/submission_common.txtを利用可。設計の採用理由、根拠/仮定/未確認、AI支援範囲、検証の実施/未実施を記す。
+
+【通過条件】
+再起動後のデータ保持と接続先を確認できる。SQLとEloquentの結果を比較し、JOINによる行の増加を説明できる。環境起動だけでアプリ完成と扱わない。
+AIは業務目的、前提、判断、正しさ、例外/運用、本人の理解を確認する。必要に応じて理解度質問を行い、回答待ちは判定を保留する。次課題の完成は今回の条件ではない。

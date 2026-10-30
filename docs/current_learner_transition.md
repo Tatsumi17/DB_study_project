@@ -1,0 +1,10 @@
+# 今回の教材分離で変わること
+
+共有用DB_study_curriculumには個人ヒアリングや進捗を含めない。現在のDB_study_projectはそのまま学習用として使う。再cloneや01Aのやり直しは不要。
+01A本文・元Excel・01Aテンプレートは不変。01B〜12を追加し、Git手順を最新合意へ統一した。
+
+今回の変更はmaterials/shared-curriculum。GitHubでmainとの比較を確認し、学習者がPR作成・マージする。AIはmergeしない。
+Mac側ではstudy/01aで回答中なので、最初にgit statusを確認。変更を保全してからmainをpullする。study/01aへmainをmergeするときも競合がないか確認し、AIと一段階ずつ操作する。回答ファイルを消すreset/cleanや強制pushは不要。
+
+ヒアリングの要旨をscenario/interview_log.mdに整理した。内容が実際の会話理解と違う場合は訂正理由付きで修正する。本文を写すだけでなく、本人の提出には回答によって判断がどう変わったかを記載する。
+教材の更新を本人の課題通過や技能確認として扱わない。

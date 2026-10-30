@@ -1,0 +1,10 @@
+# Copy into app/compose.sales.yaml. Confirm actual Sail service name first.
+services:
+  laravel.test:
+    networks:
+      - sail
+      - sales
+networks:
+  sales:
+    external: true
+    name: db-study-sales

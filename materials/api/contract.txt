@@ -1,0 +1,33 @@
+ローカル販売管理API契約 v1（教材3.0.0）
+目的：学習者アプリが外部システムの顧客/受注を参照する。実在販売サービスではない。
+顧客と受注は01のExcelと別の試験データ。移行試験07のexternal_customer_idとAPI customer_idは同じ名前空間。
+
+GET /health：認証不要。200 {"status":"ok"}。業務取得の成功は保証しない。
+GET /v1/customers：顧客一覧。
+GET /v1/orders：受注一覧。読み取り専用。書き込みメソッドは未実装（標準サーバーの501）。
+Authorization: Bearer <SALES_API_TOKEN>
+既定local-training-onlyは公開された人工演習用文字列。実サービス用キーではない。本物のキーを使わない。
+
+クエリ（両一覧共通）
+page：1以上の整数、既定1。
+per_page：1〜100、既定2。
+revision：1または2、既定1。1と2は異なるスナップショット。ページをまたぐ間は同じrevisionを指定。
+mode：normal / server_error / rate_limit / invalid_json / invalid_schema / timeout。既定normal。
+fail_page：指定ページだけ503にする。0は無効。modeより先に適用。
+未知/重複パラメータ、不正値は400。範囲外ページはdata=[]、next_page=null。順序はfixture配列の順（今回order_id/customer_id昇順）。
+
+正常応答：200 JSON {data: [...], meta: {page, per_page, total, next_page, revision, snapshot_at}}
+next_pageは次ページ番号またはnull。snapshot_atは取得時刻でなく外部データ版の時点。取得した時刻は利用側で別記録。
+顧客：customer_id（安定した一意文字列）、name（文字列・一意ではない）。
+受注：order_id（安定した一意文字列）、customer_id、ordered_at（offset付きISO8601）、amount（0以上の整数円）、currency（JPY）、status（confirmed/cancelled）、updated_at（offset付きISO8601）。
+受注額は税込・受注額で、会計上の売上ではない。取消も削除せず一覧に残る。1→2でORD-001金額訂正、ORD-002取消。勝手に最新値が変わらない固定版。
+外部IDから自分のDB内IDへ明示対応。名前の一致では対応を決めない。
+
+エラー：{error:{code:文字列}}。400 invalid_query/invalid_pagination、401 unauthorized、404 not_found、503 temporary_failure。
+rate_limit：429、Retry-After: 2。待機後もmodeを変えなければ429を返し続ける。学習者は上限を設ける。
+invalid_json：200だがJSONが壊れている。
+invalid_schema：200でJSONとしては正しいが必要構造/型が不正。
+timeout：3秒遅延後に正常応答。利用側タイムアウトを1秒にして再現可能。
+サービス停止：接続拒否等。業務上の0件とは区別する。
+
+本教材はPython標準HTTPサーバー、合成データ、固定障害。TLS、実SSO、高負荷、永続書込、外部公開は対象外。実サービスの仕様とはみなさない。

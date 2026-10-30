@@ -1,101 +1,27 @@
-# Laravel企業データ管理・業務改善演習
+# Laravel企業データ管理・業務改善 個人学習
 
-Laravelの基本開発ができる学習者が、架空企業の業務改善を通じて、データ・SQL・API・権限・テスト・運用を学ぶ教材です。
-AIが出題・企業担当者役・支援・レビューを担当し、学習者が成果物を提出します。
+このリポジトリは現在の学習者の回答・ヒアリング・レビュー・進捗を保持する場所です。
+共有教材の正本：[DB_study_curriculum](https://github.com/Tatsumi17/DB_study_curriculum)。他の人へ共有する際はそちらを案内してください。ここにある個人の学習履歴を他の人の初期設定にしません。
 
-## ファイル案内
+## 今取り組む課題
+**01A v2のヒアリング中・提出前**です。教材更新でやり直す必要はありません。
 
-| ファイル | 内容 |
-|---|---|
-| [AGENTS.md](AGENTS.md) | AIの役割、レビュー基準、出題・継続ルール |
-| [学習内容](curriculum/learning_topics.txt) | L01〜L12の目的・詳細・到達目標 |
-| [課題全体計画](curriculum/assignment_plan.txt) | 全12段階、G1〜G11、学習内容との対応 |
-| [第01課題](assignments/01/01A_brief.txt) | 現行データ・入力業務調査の詳細出題（v2） |
-| [現行Excel](materials/01/第01課題_現行管理資料.xlsx) | 架空の現行資料、3シート19行 |
-| [企業設定](scenario/company_facts.md) | 確定事項・未確認事項・ヒアリング記録 |
-| [現在の状態](progress/current_state.md) | 学習者の前提、進捗、次の作業 |
-| [提出テンプレート](templates/submission_01A.txt) | 第01課題の提出用 |
-| [レビュー用テンプレート](templates/review_template.md) | AIが根拠・判定・理解度を記録する形式 |
+1. [01A出題文](assignments/01/01A_brief.txt)：何を調べ、何を提出するか。
+2. [元Excel](materials/01/第01課題_現行管理資料.xlsx)：現状調査の根拠。
+3. [初期企業設定](scenario/company_facts.md)と[個人ヒアリング台帳](scenario/interview_log.md)：初期の未確認事項と、会話で追加確認した回答。
+4. [提出テンプレート](templates/submission_01A.txt)：submissions/01A_v1.txtへコピーして回答。テンプレートだけでは問題の前提は分かりません。
+5. [現在の状態](progress/current_state.md)：進捗・保留・次の一手。
 
-教材本文と課題はUTF-8のtxt、AI運用と状態はMarkdownです。
-全体計画は完成していますが、詳細出題は01Aまでです。01B以降の詳細教材・模擬APIは該当段階でAIが作成します。完成済みのアプリや解答集ではありません。
+01A本文と元Excel・提出テンプレートはv2と同じです。後続課題はすべて収録しましたが、01A通過前に着手を求めません。
 
-## v2で採用した学習順
-現行データと入力業務 → 顧客起点のAs-Is → To-Beと費用 → データ・ルール → 処理/API/画面 → Sailで実装・検証。
-以降は移行、外部連携、例外・変更、集計、復旧、引き継ぎへ進む。
-入力の意味と使われ方から項目を洗い出し、問題から検証までのつながりをレビューする。
-設計を固定せず、小さく実装して見直す。DDDや全機能のAPI化は必須にしない。
+## 進め方
+AIが教材更新をmaterials/*へ反映→あなたがPR確認・mainへマージ→mainをpull→study/*で課題→回答をcommit/push→PRのURLをAIへ知らせる→AIレビュー→修正と再提出→通過後にあなたがマージ。
 
-## 現在の学習者が続ける
+**回答はレビュー前にpushします。** 古い「通過後に初めてpushする」運用は廃止しました。Git操作は[手順](docs/learning_workflow.md)を参照し、AIと一段階ずつ進めます。今のstudy/01aと未コミット回答を保全してから教材更新を取り込んでください。
 
-AGENTS.mdから関連ファイルを読み込み、課題01Aへの提出を待ちます。前のチャットを読む必要がない構成です。
+## 別のAIへ渡す文
+> README.mdとAGENTS.mdを読み、学習内容・全体計画・progress/current_state.md・scenario/company_facts.md・scenario/interview_log.md・現在の出題文と資料を確認してください。01Aのヒアリング中です。既存の回答を再利用し、私の代わりに課題を完成させず、根拠と判断理由までレビューしてください。読めないファイルや未実行の確認は明示してください。
 
-別のAIへ渡す依頼例：
+[学習内容](curriculum/learning_topics.txt)／[全体計画](curriculum/assignment_plan.txt)／[全課題一覧](assignments/README.md)／[教材更新ルール](docs/curriculum_updates.md)／[教材出典](curriculum/source.md)
 
-> このリポジトリのREADME.mdとAGENTS.mdを読み、指定された学習内容・全体計画・現在の状態・企業設定・出題中の課題と資料を確認してください。あなたは出題者とレビュアーです。現在の状態から再開し、私の代わりに課題を完成させず、業務の前提と判断理由まで確認してください。読めないファイルは読めないと伝えてください。
-
-AIによってAGENTS.mdの自動読込やExcel閲覧、ファイル保存能力は異なります。自動読込を保証するものではありません。必要ならファイルを添付し、明示的に読ませてください。
-
-## 別の学習者が始める
-
-1. 教材を別リポジトリまたは別フォルダへコピーする。
-2. progress/current_state.mdのプロフィールを自分のものにし、課題は未着手・未評価から始める。
-3. 他の学習者のsubmissions/、reviews/を自分の実績として流用しない。
-4. AIにLaravel/Sail・Git・SQL・API・テスト・公開の経験、OS、予算、目的を伝える。
-5. company_facts.mdの初期設定から始める。前学習者の回答追記を使う場合は、初期に渡す既知資料として明示する。
-6. AIが課題01Aを出題した時点で「出題済み・提出待ち」に更新する。
-
-教材の到達目標は維持し、課題の分割や説明量を調整します。経験者としての自己申告と実際の確認は別に扱います。
-
-## ローカルでの運用
-
-1. AIが課題文と必要資料を用意する。
-2. 学習者のローカルリポジトリへ配置する。直接編集できるAI環境ならAIが行う。このクラウド会話からGitHubへ反映する場合は学習者の明示依頼に従い、学習者がcloneまたはpullで取得する。
-3. 学習者がローカルで課題を行い、回答ファイルやコード、実行結果をAIへ提出する。
-4. AIがレビューと理解度チェックを行い、レビュー記録・進捗の更新分を返す。
-5. 修正が必要なら繰り返す。課題通過後、学習者が差分を確認してコミット・push・必要なPR/マージを行う。
-
-AIは追加の明示依頼なしにコミット・pushしない。GitHubへの同期は課題出題ごとには行わない。
-最初は教材一式を配置し、以後は変更されたファイルだけを反映する。ローカルで追加した回答・進捗を古い教材で上書きしない。
-対象：[Tatsumi17/DB_study_project](https://github.com/Tatsumi17/DB_study_project)
-
-## 初回の配置
-
-初回教材は `setup/course-materials` ブランチから取得する。mainへのマージは学習者が行う。
-
-新規clone（保存先に同名フォルダがない場合）：
-
-```sh
-git clone --branch setup/course-materials https://github.com/Tatsumi17/DB_study_project.git
-cd DB_study_project
-```
-
-既存のローカルリポジトリがある場合は再cloneせず、まず `git status` で未保存の変更を確認する。変更があれば保全し、既存ブランチの状態を確認してから以下を実行する。
-
-```sh
-git fetch origin
-git switch setup/course-materials
-git pull --ff-only origin setup/course-materials
-```
-
-ローカルにそのブランチがなく自動追跡もできない場合は `git switch --track origin/setup/course-materials` を使う。競合や履歴の分岐が出た場合は強制上書きせず確認する。
-初回教材の公開のみ、学習者の明示依頼でAIが実施する。以後の課題通過後のGit操作は引き続き学習者が担当する。
-
-確認するファイルは `assignments/01/01A_brief.txt` と `materials/01/第01課題_現行管理資料.xlsx`。
-元資料の抜粋・空欄を勝手に補完しない。
-
-## 提出と記録
-
-提出：submissions/に課題IDと版が分かるファイルを置くか、チャットで渡します。
-レビュー：reviews/に追記し、progress/current_state.mdから根拠を参照します。
-ヒアリング回答：scenario/company_facts.mdに追加します。
-サンプル：submissions/01A_v1.txt、reviews/01A_v1_review.md。
-未提出の例示ファイルは作成していません。
-
-## 範囲
-
-必修は追加の有料サービス契約なしでローカル完了できる計画です。LaravelはSail、新規プロジェクト、MySQL/Bladeが基本です。
-Sail環境の互換性・利用条件は課題06Aで確認します。
-クラウド公開・BigQuery実機・実組織SSOは追加演習です。ローカルの再構築を本番公開経験とは扱いません。
-実データ・秘密情報をコミットしないでください。配布Excelはすべて人工データです。
-Excelは元ファイルを変更せず同梱しています。日本語のセル内容と19行は確認済みですが、作成時の画像プレビューでは日本語フォントに制約がありました。
+AIの作業環境とあなたのMacは別です。GitHubへ反映しただけではMacへ反映済みとみなしません。

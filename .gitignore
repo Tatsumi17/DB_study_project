@@ -12,3 +12,7 @@ storage/logs/
 storage/framework/
 # Keep learning SQL and artificial datasets under version control.
 # Do not use blanket *.sql or *.csv exclusions.
+
+# Local Python verification outputs
+__pycache__/
+*.pyc

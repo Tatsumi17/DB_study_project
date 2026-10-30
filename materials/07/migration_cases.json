@@ -1,0 +1,56 @@
+[
+  {
+    "source_row": "M001",
+    "external_customer_id": "EXT-001",
+    "company_name": "試験用あおぞら商事",
+    "contact_name": "試験窓口A",
+    "email": "a@example.com",
+    "owner_code": "SALES-A",
+    "updated_at": "2026-10-20"
+  },
+  {
+    "source_row": "M002",
+    "external_customer_id": "EXT-001",
+    "company_name": "試験用あおぞら商事",
+    "contact_name": "試験窓口A",
+    "email": "new-a@example.com",
+    "owner_code": "SALES-A",
+    "updated_at": "2026-10-22"
+  },
+  {
+    "source_row": "M003",
+    "external_customer_id": "EXT-002",
+    "company_name": "試験用かえで企画",
+    "contact_name": "試験窓口B",
+    "email": "b@example.com",
+    "owner_code": "SALES-B",
+    "updated_at": "2026-10-21"
+  },
+  {
+    "source_row": "M004",
+    "external_customer_id": "EXT-003",
+    "company_name": "試験用あおぞら商事",
+    "contact_name": "試験窓口C",
+    "email": "c@example.com",
+    "owner_code": "SALES-A",
+    "updated_at": "2026-10-20"
+  },
+  {
+    "source_row": "M005",
+    "external_customer_id": "EXT-004",
+    "company_name": "試験用未確認社",
+    "contact_name": "試験窓口D",
+    "email": "invalid-address",
+    "owner_code": "UNKNOWN",
+    "updated_at": "2026-10-40"
+  },
+  {
+    "source_row": "M006",
+    "external_customer_id": null,
+    "company_name": "試験用かえで企画",
+    "contact_name": null,
+    "email": null,
+    "owner_code": "SALES-B",
+    "updated_at": "2026-10-23"
+  }
+]

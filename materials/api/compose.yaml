@@ -1,0 +1,18 @@
+services:
+  sales-api:
+    image: python:3.12-slim
+    working_dir: /srv
+    command: ["python", "server.py"]
+    environment:
+      BIND_HOST: "0.0.0.0"
+      PORT: "8099"
+      SALES_API_TOKEN: "${SALES_API_TOKEN:-local-training-only}"
+    volumes:
+      - ./:/srv:ro
+    ports:
+      - "127.0.0.1:8099:8099"
+    networks:
+      - sales
+networks:
+  sales:
+    name: db-study-sales
